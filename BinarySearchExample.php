@@ -1,17 +1,27 @@
 <?php
 
+date_default_timezone_set("America/Chicago");
+
 class AlgorithmTest {
 
     public static function main() {
 
-        $sampleSize = 1000;
+        $sampleSize = 1000000;
+        $find = 1000000;
+
         $a = array_fill(0, $sampleSize, NULL);
 
         for ($i = 0; $i < $sampleSize; $i++) {
             $a[$i] = $i + 1;
         }
 
-        $idx = AlgorithmTest::binary_search($a, 1000);
+        // Get the start time in microseconds, as a float value
+        $starttime = microtime(true);
+
+        $idx = AlgorithmTest::binary_search($a, $find);
+
+        // time in microseconds
+        echo round(microtime(true) - $starttime, 3) * 10000;
 
         if ($idx > 0) {
             echo "Position: " . $idx . " holds value: " . $a[$idx];
