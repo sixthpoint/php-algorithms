@@ -6,7 +6,7 @@ class AlgorithmTest {
 
     public static function main() {
 
-        $sampleSize = 100;
+        $sampleSize = 10000;
         $iterations = 1;
         $x = 0;
         $time = 0;
@@ -29,13 +29,13 @@ class AlgorithmTest {
     }
 
     /**
-     * Sorts a array by finding the middle then dividing and conquering
+     * Sorts a array by finding the middle then dividing and conquering recursively
      *
      * @param array
      * @param start
      * @param end
      */
-    public function quickSort($array, $start, $end) {
+    public function quickSort(&$array, $start, $end) {
 
         // Align the left and right starting positions
         $leftPos = $start;
@@ -74,7 +74,14 @@ class AlgorithmTest {
         $this->quickSort($array, $rightPos + 1, $end);
     }
 
-    public function swap($array, $index1, $index2) {
+    /**
+     * Swaps index values by position
+     *
+     * @param array
+     * @param index1
+     * @param index2
+     */
+    public function swap(&$array, $index1, $index2) {
         $temp = $array[$index1];
         $array[$index1] = $array[$index2];
         $array[$index2] = $temp;
